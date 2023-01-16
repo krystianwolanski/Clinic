@@ -1,0 +1,15 @@
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\bin\Debug\net6.0\Clinic.Application.deps.json
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\bin\Debug\net6.0\Clinic.Application.dll
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\bin\Debug\net6.0\Clinic.Application.pdb
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\bin\Debug\net6.0\Clinic.Domain.dll
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\bin\Debug\net6.0\Clinic.Domain.pdb
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.csproj.AssemblyReference.cache
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.AssemblyInfoInputs.cache
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.AssemblyInfo.cs
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.csproj.CoreCompileInputs.cache
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.csproj.CopyComplete
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.dll
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\refint\Clinic.Application.dll
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\Clinic.Application.pdb
+C:\Users\krysw\source\repos\Przychodnia\Clinic.Application\obj\Debug\net6.0\ref\Clinic.Application.dll
