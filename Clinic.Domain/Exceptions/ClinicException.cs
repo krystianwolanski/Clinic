@@ -2,7 +2,7 @@
 {
     public abstract class ClinicException : Exception
     {
-        public ClinicException(string message) : base(message)
+        protected ClinicException(string message) : base(message)
         {
         }
     }
