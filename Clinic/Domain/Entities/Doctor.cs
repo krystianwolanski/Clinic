@@ -1,4 +1,5 @@
-﻿using Clinic.Domain.Exceptions;
+﻿using Clinic.Domain.Enums;
+using Clinic.Domain.Exceptions;
 using Clinic.Domain.ValueObjects;
 
 namespace Clinic.Domain.Entities
@@ -6,18 +7,22 @@ namespace Clinic.Domain.Entities
     public class Doctor : Employee
     {
         private readonly IEnumerable<Doctor> _allDoctors;
-        private readonly string _specialty;
 
         public Doctor(
+            string email,
+            string password,
+            Role role,
             IEnumerable<Doctor> allDoctors,
             Pesel pesel,
             string firstName,
             string lastName,
-            string specialty) : base(pesel, firstName, lastName)
+            string specialty) : base(email, password, role, pesel, firstName, lastName)
         {
             _allDoctors = allDoctors;
-            _specialty = specialty;
+            Specialty = specialty;
         }
+
+        public string Specialty { get; }
 
         public override void AddDuty(DateOnly duty)
         {
@@ -32,7 +37,7 @@ namespace Clinic.Domain.Entities
         private bool IsThereADoctorWithThisSpecialtyOnDuty(DateOnly date)
         {
             return _allDoctors
-                .Any(doctor => doctor._specialty.Equals(this._specialty)
+                .Any(doctor => doctor.Specialty.Equals(this.Specialty)
                     && doctor.Duties.Any(duty => duty == date));
         }
     }

@@ -1,14 +1,21 @@
-﻿using Clinic.Domain.Exceptions;
+﻿using Clinic.Domain.Enums;
+using Clinic.Domain.Exceptions;
 using Clinic.Domain.ValueObjects;
 
-namespace Clinic.Domain
+namespace Clinic.Domain.Entities
 {
-    public abstract class Employee
+    public abstract class Employee : User
     {
         private readonly List<DateOnly> _duties = new();
         private readonly int _maxDutiesCount = 10;
 
-        protected Employee(Pesel pesel, string firstName, string lastName)
+        protected Employee(
+            string email,
+            string password,
+            Role role,
+            Pesel pesel,
+            string firstName,
+            string lastName) : base(email, password, role)
         {
             FirstName = firstName;
             LastName = lastName;
