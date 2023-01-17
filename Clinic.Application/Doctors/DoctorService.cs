@@ -20,7 +20,9 @@ namespace Clinic.Application.Doctors
             var employeeExists = _employeeReadService.ExistsByPesel(dto.Pesel);
 
             if (employeeExists)
+            {
                 throw new EmployeeAlreadyExistsException(dto.Pesel);
+            }
 
             var allDoctors = _doctorRepository.GetAll();
             _doctorRepository.Add(new Doctor(allDoctors, dto.Pesel, dto.FirstName, dto.LastName, "test"));
@@ -31,7 +33,9 @@ namespace Clinic.Application.Doctors
             var doctor = _doctorRepository.Get(pesel);
 
             if (doctor is null)
+            {
                 throw new EmployeeNotFoundException(pesel);
+            }
 
             doctor.AddDuty(duty);
         }
@@ -54,7 +58,9 @@ namespace Clinic.Application.Doctors
             var doctor = _doctorRepository.Get(pesel);
 
             if (doctor is null)
+            {
                 throw new EmployeeNotFoundException(pesel);
+            }
 
             _doctorRepository.Remove(doctor);
         }

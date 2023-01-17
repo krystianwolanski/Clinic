@@ -22,7 +22,9 @@ namespace Clinic.Domain.Entities
         public override void AddDuty(DateOnly duty)
         {
             if (IsThereADoctorWithThisSpecialtyOnDuty(duty))
+            {
                 throw new DoctorWithThisSpecialtyAlreadyOnDutyException(duty);
+            }
 
             base.AddDuty(duty);
         }

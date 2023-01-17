@@ -20,7 +20,9 @@ namespace Clinic.Application.Nurses
             var employeeExists = _employeeReadService.ExistsByPesel(dto.Pesel);
 
             if (employeeExists)
+            {
                 throw new EmployeeAlreadyExistsException(dto.Pesel);
+            }
 
             _nurseRepository.Add(new Nurse(dto.Pesel, dto.FirstName, dto.LastName));
         }
@@ -43,7 +45,9 @@ namespace Clinic.Application.Nurses
             var nurse = _nurseRepository.Get(pesel);
 
             if (nurse is null)
+            {
                 throw new EmployeeNotFoundException(pesel);
+            }
 
             _nurseRepository.Remove(nurse);
         }

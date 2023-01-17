@@ -8,7 +8,7 @@ namespace Clinic.Domain
         private readonly List<DateOnly> _duties = new();
         private readonly int _maxDutiesCount = 10;
 
-        public Employee(Pesel pesel, string firstName, string lastName)
+        protected Employee(Pesel pesel, string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -24,13 +24,19 @@ namespace Clinic.Domain
         public virtual void AddDuty(DateOnly duty)
         {
             if (HasDutyOnThisDay(duty))
+            {
                 throw new DutyOnThisDayException(Pesel);
+            }
 
             if (HasMaxDutiesPerMonth(duty))
+            {
                 throw new MaxDutiesPerMonthException(Pesel, _maxDutiesCount);
+            }
 
             if (IsItDutyTheDayAfterAnother(duty))
+            {
                 throw new DutyTheDayAfterAnotherException(Pesel);
+            }
 
             _duties.Add(duty);
         }
