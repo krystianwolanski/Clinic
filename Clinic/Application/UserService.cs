@@ -1,6 +1,5 @@
 ﻿using Clinic.Application.Exceptions;
 using Clinic.Domain.Entities;
-using Clinic.Domain.Enums;
 
 namespace Clinic.Application
 {
@@ -65,16 +64,16 @@ namespace Clinic.Application
             return _users.GetAll();
         }
 
-        public Role Login(string email, string password)
+        public User Login(string email, string password)
         {
             var user = _users.Get(email);
 
-            if (user?.Password != password)
+            if (user is null || user.Password != password)
             {
                 throw new UncorrectLoginOrPasswordException();
             }
 
-            return user.Role;
+            return user;
         }
 
         public void Remove(string email)

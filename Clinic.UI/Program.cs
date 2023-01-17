@@ -1,6 +1,9 @@
-﻿public class Program
+﻿namespace Clinic.UI
 {
-    private static void Main(string[] args)
+    public static class Program
     {
+        private static void Main()
+        {
+        }
     }
 }

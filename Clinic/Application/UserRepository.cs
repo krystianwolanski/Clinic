@@ -10,7 +10,7 @@ namespace Clinic.Application
 
         bool ExistsByPesel(string pesel);
 
-        User? Get(string pesel);
+        User? Get(string email);
 
         IEnumerable<User> GetAll();
 
