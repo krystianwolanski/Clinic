@@ -66,7 +66,7 @@ namespace Clinic.Application
 
         public IEnumerable<T> GetAll<T>() where T : User
         {
-            return _userRepository.GetAll().Where(x => x is T).Cast<T>();
+            return _userRepository.GetAll().Where(u => u is T).Cast<T>();
         }
 
         public User Login(string login, string password)
