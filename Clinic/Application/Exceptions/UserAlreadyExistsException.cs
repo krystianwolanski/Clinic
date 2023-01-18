@@ -4,11 +4,11 @@ namespace Clinic.Application.Exceptions
 {
     public class UserAlreadyExistsException : ClinicException
     {
-        public UserAlreadyExistsException(string email) : base($"Employee with email '{email}' already exists.")
+        public UserAlreadyExistsException(string login) : base($"Employee with login '{login}' already exists.")
         {
-            Email = email;
+            Login = login;
         }
 
-        public string Email { get; }
+        public string Login { get; }
     }
 }

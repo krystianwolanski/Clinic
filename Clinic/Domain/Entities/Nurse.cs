@@ -6,12 +6,11 @@ namespace Clinic.Domain.Entities
     public class Nurse : Employee
     {
         public Nurse(
-            string email,
+            string login,
             string password,
-            Role role,
             Pesel pesel,
             string firstName,
-            string lastName) : base(email, password, role, pesel, firstName, lastName)
+            string lastName) : base(login, password, Role.Nurse, pesel, firstName, lastName)
         {
         }
     }

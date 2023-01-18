@@ -2,11 +2,11 @@
 {
     public class DutyTheDayAfterAnotherException : ClinicException
     {
-        public DutyTheDayAfterAnotherException(string email) : base($"Employee with email '{email}' has a duty day earlier.")
+        public DutyTheDayAfterAnotherException(string login) : base($"Employee with login '{login}' has a duty day earlier.")
         {
-            Email = email;
+            Login = login;
         }
 
-        public string Email { get; }
+        public string Login { get; }
     }
 }

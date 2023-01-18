@@ -2,11 +2,11 @@
 {
     public class DutyOnThisDayException : ClinicException
     {
-        public DutyOnThisDayException(string email) : base($"Employee with email '{email}' has already duty on this day.")
+        public DutyOnThisDayException(string login) : base($"Employee with login '{login}' has already duty on this day.")
         {
-            Email = email;
+            Login = login;
         }
 
-        public string Email { get; }
+        public string Login { get; }
     }
 }

@@ -4,14 +4,14 @@ namespace Clinic.Domain.Entities
 {
     public abstract class User
     {
-        protected User(string email, string password, Role role)
+        protected User(string login, string password, Role role)
         {
-            Email = email;
+            Login = login;
             Password = password;
             Role = role;
         }
 
-        public string Email { get; }
+        public string Login { get; }
         public string Password { get; }
         public Role Role { get; }
     }

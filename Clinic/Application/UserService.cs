@@ -5,42 +5,42 @@ namespace Clinic.Application
 {
     public class UserService
     {
-        private readonly IUserRepository _users;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository doctors)
+        public UserService(IUserRepository userRepository)
         {
-            _users = doctors;
+            _userRepository = userRepository;
         }
 
         public void Add(User dto)
         {
-            var user = _users.Get(dto.Email);
+            var user = _userRepository.Get(dto.Login);
 
             if (user != null)
             {
-                throw new UserAlreadyExistsException(dto.Email);
+                throw new UserAlreadyExistsException(dto.Login);
             }
 
-            _users.Add(dto);
+            _userRepository.Add(dto);
         }
 
         public void Add(Employee dto)
         {
-            var user = _users.Get(dto.Email);
+            var user = _userRepository.Get(dto.Login);
 
             if (user != null)
             {
-                throw new UserAlreadyExistsException(dto.Email);
+                throw new UserAlreadyExistsException(dto.Login);
             }
 
-            var exists = _users.ExistsByPesel(dto.Pesel);
+            var exists = _userRepository.ExistsByPesel(dto.Pesel);
 
             if (exists)
             {
-                throw new UserAlreadyExistsException(dto.Email);
+                throw new UserAlreadyExistsException(dto.Login);
             }
 
-            _users.Add(dto);
+            _userRepository.Add(dto);
         }
 
         public void AddRange(IEnumerable<User> dtos)
@@ -59,33 +59,43 @@ namespace Clinic.Application
             }
         }
 
-        public IEnumerable<User> GetAll()
+        public T? Get<T>(string login) where T : User
         {
-            return _users.GetAll();
+            return _userRepository.Get(login) as T;
         }
 
-        public User Login(string email, string password)
+        public IEnumerable<T> GetAll<T>() where T : User
         {
-            var user = _users.Get(email);
+            return _userRepository.GetAll().Where(x => x is T).Cast<T>();
+        }
 
-            if (user is null || user.Password != password)
+        public User Login(string login, string password)
+        {
+            var user = _userRepository.Get(login);
+
+            if (user is null)
             {
-                throw new UncorrectLoginOrPasswordException();
+                throw new UserNotFoundException(login);
+            }
+
+            if (user.Password != password)
+            {
+                throw new IncorrectPasswordException();
             }
 
             return user;
         }
 
-        public void Remove(string email)
+        public void Remove(string login)
         {
-            var user = _users.Get(email);
+            var user = _userRepository.Get(login);
 
             if (user is null)
             {
-                throw new UserNotFoundException(email);
+                throw new UserNotFoundException(login);
             }
 
-            _users.Remove(user);
+            _userRepository.Remove(user);
         }
     }
 }

@@ -9,20 +9,19 @@ namespace Clinic.Domain.Entities
         private readonly IEnumerable<Doctor> _allDoctors;
 
         public Doctor(
-            string email,
+            string login,
             string password,
-            Role role,
             IEnumerable<Doctor> allDoctors,
             Pesel pesel,
             string firstName,
             string lastName,
-            string specialty) : base(email, password, role, pesel, firstName, lastName)
+            string specialty) : base(login, password, Role.Doctor, pesel, firstName, lastName)
         {
             _allDoctors = allDoctors;
             Specialty = specialty;
         }
 
-        public string Specialty { get; }
+        public string Specialty { get; set; }
 
         public override void AddDuty(DateOnly duty)
         {

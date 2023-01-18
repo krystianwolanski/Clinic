@@ -2,15 +2,15 @@
 {
     internal class MaxDutiesPerMonthException : ClinicException
     {
-        public MaxDutiesPerMonthException(string email, int maxDutiesNumber)
-            : base($"Employee with email '{email}' has excited max duties per month. " +
+        public MaxDutiesPerMonthException(string login, int maxDutiesNumber)
+            : base($"Employee with login '{login}' has excited max duties per month. " +
                   $"Max duties per month is {maxDutiesNumber}.")
         {
-            Email = email;
+            Login = login;
             MaxDutiesNumber = maxDutiesNumber;
         }
 
-        public string Email { get; }
+        public string Login { get; }
         public int MaxDutiesNumber { get; }
     }
 }

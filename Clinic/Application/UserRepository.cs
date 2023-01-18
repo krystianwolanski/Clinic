@@ -10,7 +10,7 @@ namespace Clinic.Application
 
         bool ExistsByPesel(string pesel);
 
-        User? Get(string email);
+        User? Get(string login);
 
         IEnumerable<User> GetAll();
 
@@ -36,9 +36,9 @@ namespace Clinic.Application
             return _users.Exists(u => (u as Employee)?.Pesel == pesel);
         }
 
-        public User? Get(string email)
+        public User? Get(string login)
         {
-            return _users.FirstOrDefault(u => u.Email == email);
+            return _users.FirstOrDefault(u => u.Login == login);
         }
 
         public IEnumerable<User> GetAll()
