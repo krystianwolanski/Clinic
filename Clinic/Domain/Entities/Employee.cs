@@ -10,12 +10,12 @@ namespace Clinic.Domain.Entities
         private readonly int _maxDutiesCount = 10;
 
         protected Employee(
-            string login,
-            string password,
+            Login login,
+            Password password,
             Role role,
             Pesel pesel,
-            string firstName,
-            string lastName) : base(login, password, role)
+            FirstName firstName,
+            LastName lastName) : base(login, password, role)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -23,8 +23,8 @@ namespace Clinic.Domain.Entities
         }
 
         public IEnumerable<DateOnly> Duties => _duties;
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public FirstName FirstName { get; set; }
+        public LastName LastName { get; set; }
         public Pesel Pesel { get; }
 
         public virtual void AddDuty(DateOnly duty)

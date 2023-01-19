@@ -9,8 +9,8 @@ namespace Clinic.Domain.Entities
             string login,
             string password,
             Pesel pesel,
-            string firstName,
-            string lastName) : base(login, password, Role.Nurse, pesel, firstName, lastName)
+            FirstName firstName,
+            LastName lastName) : base(login, password, Role.Nurse, pesel, firstName, lastName)
         {
         }
     }

@@ -4,13 +4,11 @@ namespace Clinic.Domain.ValueObjects
 {
     public record Pesel
     {
-        public string Value { get; }
-
         public Pesel(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new EmptyPeselException();
+                throw new EmptyValueException(nameof(Pesel));
             }
 
             if (!IsValidPesel(value))
@@ -20,6 +18,7 @@ namespace Clinic.Domain.ValueObjects
 
             Value = value;
         }
+        public string Value { get; }
 
         public static implicit operator Pesel(string value) => new(value);
         public static implicit operator string(Pesel pesel) => pesel.Value;

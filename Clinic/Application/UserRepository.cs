@@ -1,22 +1,8 @@
 ﻿using Clinic.Domain.Entities;
+using Clinic.Domain.Repositories;
 
 namespace Clinic.Application
 {
-    public interface IUserRepository
-    {
-        void Add(User user);
-
-        void AddRange(IEnumerable<User> users);
-
-        bool ExistsByPesel(string pesel);
-
-        User? Get(string login);
-
-        IEnumerable<User> GetAll();
-
-        void Remove(User user);
-    }
-
     public class UserRepository : IUserRepository
     {
         private readonly List<User> _users = new();
@@ -44,6 +30,11 @@ namespace Clinic.Application
         public IEnumerable<User> GetAll()
         {
             return _users;
+        }
+
+        public IEnumerable<T> GetAll<T>() where T : User
+        {
+            return _users.Where(u => u is T).Cast<T>();
         }
 
         public void Remove(User user)

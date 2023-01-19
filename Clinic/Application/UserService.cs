@@ -1,5 +1,6 @@
 ﻿using Clinic.Application.Exceptions;
 using Clinic.Domain.Entities;
+using Clinic.Domain.Repositories;
 
 namespace Clinic.Application
 {
@@ -66,7 +67,7 @@ namespace Clinic.Application
 
         public IEnumerable<T> GetAll<T>() where T : User
         {
-            return _userRepository.GetAll().Where(u => u is T).Cast<T>();
+            return _userRepository.GetAll<T>();
         }
 
         public User Login(string login, string password)

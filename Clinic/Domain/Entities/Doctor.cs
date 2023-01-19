@@ -1,31 +1,34 @@
 ﻿using Clinic.Domain.Enums;
 using Clinic.Domain.Exceptions;
+using Clinic.Domain.Repositories;
 using Clinic.Domain.ValueObjects;
 
 namespace Clinic.Domain.Entities
 {
     public class Doctor : Employee
     {
-        private readonly IEnumerable<Doctor> _allDoctors;
+        private readonly IUserRepository _userRepository;
 
         public Doctor(
-            string login,
-            string password,
-            IEnumerable<Doctor> allDoctors,
+            Login login,
+            Password password,
             Pesel pesel,
-            string firstName,
-            string lastName,
-            string specialty) : base(login, password, Role.Doctor, pesel, firstName, lastName)
+            FirstName firstName,
+            LastName lastName,
+            Specialty specialty,
+            IUserRepository userRepository) : base(login, password, Role.Doctor, pesel, firstName, lastName)
         {
-            _allDoctors = allDoctors;
             Specialty = specialty;
+            _userRepository = userRepository;
         }
 
-        public string Specialty { get; set; }
+        public Specialty Specialty { get; set; }
 
         public override void AddDuty(DateOnly duty)
         {
-            if (IsThereADoctorWithThisSpecialtyOnDuty(duty))
+            var allDoctors = _userRepository.GetAll<Doctor>();
+
+            if (IsThereADoctorWithThisSpecialtyOnDuty(duty, allDoctors))
             {
                 throw new DoctorWithThisSpecialtyAlreadyOnDutyException(duty);
             }
@@ -33,9 +36,9 @@ namespace Clinic.Domain.Entities
             base.AddDuty(duty);
         }
 
-        private bool IsThereADoctorWithThisSpecialtyOnDuty(DateOnly date)
+        private bool IsThereADoctorWithThisSpecialtyOnDuty(DateOnly date, IEnumerable<Doctor> allDoctors)
         {
-            return _allDoctors
+            return allDoctors
                 .Any(doctor => doctor.Specialty.Equals(this.Specialty)
                     && doctor.Duties.Any(duty => duty == date));
         }
