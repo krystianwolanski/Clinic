@@ -36,11 +36,11 @@ namespace Clinic.Domain.Entities
             base.AddDuty(duty);
         }
 
-        private bool IsThereADoctorWithThisSpecialtyOnDuty(DateOnly date, IEnumerable<Doctor> allDoctors)
+        private bool IsThereADoctorWithThisSpecialtyOnDuty(DateOnly duty, IEnumerable<Doctor> allDoctors)
         {
             return allDoctors
                 .Any(doctor => doctor.Specialty.Equals(this.Specialty)
-                    && doctor.Duties.Any(duty => duty == date));
+                    && doctor.Duties.Any(d => d.Equals(duty)));
         }
     }
 }
