@@ -1,5 +1,6 @@
 ﻿using Clinic.Application.Exceptions;
 using Clinic.Domain.Entities;
+using Clinic.Domain.Exceptions;
 using Clinic.Domain.Repositories;
 
 namespace Clinic.Application
@@ -38,7 +39,7 @@ namespace Clinic.Application
 
             if (exists)
             {
-                throw new UserAlreadyExistsException(dto.Login);
+                throw new EmployeeAlreadyExistsException(dto.Pesel);
             }
 
             _userRepository.Add(dto);

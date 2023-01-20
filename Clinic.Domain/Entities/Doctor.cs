@@ -7,8 +7,6 @@ namespace Clinic.Domain.Entities
 {
     public class Doctor : Employee
     {
-        private readonly IUserRepository _userRepository;
-
         public Doctor(
             Login login,
             Password password,
@@ -16,17 +14,16 @@ namespace Clinic.Domain.Entities
             FirstName firstName,
             LastName lastName,
             Specialty specialty,
-            IUserRepository userRepository) : base(login, password, Role.Doctor, pesel, firstName, lastName)
+            IUserRepository userRepository) : base(login, password, Role.Doctor, pesel, firstName, lastName, userRepository)
         {
             Specialty = specialty;
-            _userRepository = userRepository;
         }
 
         public Specialty Specialty { get; set; }
 
         public override void AddDuty(DateOnly duty)
         {
-            var allDoctors = _userRepository.GetAll<Doctor>();
+            var allDoctors = UserRepository.GetAll<Doctor>();
 
             if (IsThereADoctorWithThisSpecialtyOnDuty(duty, allDoctors))
             {

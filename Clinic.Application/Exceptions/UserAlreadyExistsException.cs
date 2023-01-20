@@ -4,7 +4,7 @@ namespace Clinic.Application.Exceptions
 {
     public class UserAlreadyExistsException : ClinicException
     {
-        public UserAlreadyExistsException(string login) : base($"Employee with login '{login}' already exists.")
+        public UserAlreadyExistsException(string login) : base($"User with login '{login}' already exists.")
         {
             Login = login;
         }
