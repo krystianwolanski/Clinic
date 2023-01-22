@@ -2,7 +2,7 @@ using Clinic.Domain.Exceptions;
 
 namespace Clinic.Domain.ValueObjects
 {
-    public record Specialty
+    public sealed record Specialty
     {
         public static readonly Specialty Surgery = nameof(Surgery);
         public static readonly Specialty Cardiology = nameof(Cardiology);

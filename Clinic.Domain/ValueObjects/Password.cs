@@ -2,7 +2,7 @@ using Clinic.Domain.Exceptions;
 
 namespace Clinic.Domain.ValueObjects
 {
-    public record Password
+    public sealed record Password
     {
         public Password(string value)
         {

@@ -2,7 +2,7 @@
 
 namespace Clinic.Domain.ValueObjects
 {
-    public record Pesel
+    public sealed record Pesel
     {
         public Pesel(string value)
         {
